@@ -54,5 +54,5 @@ Ahora debemos recargar cron, para que vuelva a cargar el fichero de tareas:
 
 Ahora nuestro sistema de copia automatica esta funcionando.
 
-![Funcionando Practica 2](./img/P2.png)
+![](img/P2.PNG)
 
