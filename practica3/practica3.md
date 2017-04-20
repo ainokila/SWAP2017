@@ -86,3 +86,35 @@ Necesitamos modificar el archivo /etc/haproxy/haproxy.cfg de la siguiente manera
     curl 10.0.2.5
 
 ![](img/haproxy.PNG)
+
+### Comparación con Apache Benchmark (ab)
+
+### ab- nginx
+
+Primero voy a realizar el benchmark a nginx, antes de nada debemos parar el servicio haproxy y arrancar nginx.
+
+    sudo service haproxy stop
+    sudo service nginx start
+
+Desde el cliente lanzaré ab con una concurrencia de 100 y 300.000 peticiones.
+
+    ab -c 100 -n 300000 http://10.0.2.5/
+
+Esperamos y obtenemos el siguiente resultado.
+
+![](img/ab_nginx_resultado.PNG)
+
+### ab- haproxy
+
+Ahora debemos hacer lo contrario, para nginx y arrancar haproxy.
+
+    sudo service nginx stop
+    sudo service haproxy start
+
+Desde el cliente lanzaré ab con una concurrencia de 100 y 300.000 peticiones.
+
+    ab -c 100 -n 300000 http://10.0.2.5/
+
+Esperamos y obtenemos el siguiente resultado.
+
+![](img/ab_haproxy_resultado.PNG)
