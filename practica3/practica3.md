@@ -125,4 +125,4 @@ Esperamos y obtenemos el siguiente resultado.
 
 ### Conclusión
 
-En mi caso haproxy ha tardado menos que nginx para hacer el balanceo de las 300.000 peticiones realizadas
+En mi caso haproxy ha tardado 58,3 ms por peticion y nginx 94,6 ms por petición, por tanto a simple vista parece mas rápido haproxy.
