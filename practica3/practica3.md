@@ -81,6 +81,10 @@ Necesitamos modificar el archivo /etc/haproxy/haproxy.cfg de la siguiente manera
       server m1 10.0.2.4:80 maxconn 32
       server m2 10.0.2.15:80 maxconn 32
 
+Una vez que se ha guardado, necesitamos que recarge los archivos de configuración.
+
+      sudo service nginx reload
+
 #### Prueba de haproxy
 
     curl 10.0.2.5
@@ -89,7 +93,7 @@ Necesitamos modificar el archivo /etc/haproxy/haproxy.cfg de la siguiente manera
 
 ### Comparación con Apache Benchmark (ab)
 
-### ab- nginx
+#### ab - nginx
 
 Primero voy a realizar el benchmark a nginx, antes de nada debemos parar el servicio haproxy y arrancar nginx.
 
@@ -104,7 +108,7 @@ Esperamos y obtenemos el siguiente resultado.
 
 ![](img/ab_nginx_resultado.PNG)
 
-### ab- haproxy
+#### ab - haproxy
 
 Ahora debemos hacer lo contrario, para nginx y arrancar haproxy.
 
@@ -118,3 +122,7 @@ Desde el cliente lanzaré ab con una concurrencia de 100 y 300.000 peticiones.
 Esperamos y obtenemos el siguiente resultado.
 
 ![](img/ab_haproxy_resultado.PNG)
+
+### Conclusión
+
+En mi caso haproxy ha tardado menos que nginx para hacer el balanceo de las 300.000 peticiones realizadas
