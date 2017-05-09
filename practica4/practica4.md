@@ -76,8 +76,8 @@ Una vez abierto añadimos la siguiente configuración,
     iptables -p FORWARD DROP
 
     #Permitimos los puertos 22,80 y 443
-    iptables -A INPUT -i enp0s3 -p tcp -m multiport --dports 22,80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
-    iptables -A OUTPUT -i enp0s3 -p tcp -m multiport --dports 22,80,443 -m state --state ESTABLISHED -j ACCEPT
+    iptables -A INPUT -i eth -p tcp -m multiport --dports 22,80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
+    iptables -A OUTPUT -i eth -p tcp -m multiport --dports 22,80,443 -m state --state ESTABLISHED -j ACCEPT
 
 Una vez realizado se debe programar el script para que se ejecute cada vez que se arranca el sistema, para conseguirlo editamos el fichero de contrab y añadimos,
 
