@@ -87,6 +87,10 @@ Ya tendriamos los puertos preparados de ambas máquinas una vez realizado.
 
 ### Funcionamiento de la práctica
 
-Para probar el funcionamiento desde el cliente lanzaré curl -k https://balanceadorIP
+Para probar el funcionamiento de la práctica probaré https y http con curl,
 
 ![https ok](img/ssl.PNG)
+
+![http ok](img/no-ssl.PNG)
+
+Como se puede apreciar funcionan perfectamente.
