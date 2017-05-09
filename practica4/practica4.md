@@ -54,11 +54,7 @@ Ahora simplemente reiniciamos el servicio y ya funcionará https con ssl.
 
     sudo service nginx reload
 
-#### Funcionamiento de ssl
 
-Para probar el Funcionamiento desde el cliente lanzaré curl -k https://balanceadorIP
-
-![https ok](img/https.PNG)
 
 ### Configuración iptables en M1 Y M2
 
@@ -82,3 +78,15 @@ Una vez abierto añadimos la siguiente configuración,
     #Permitimos los puertos 22,80 y 443
     iptables -A INPUT -i enp0s3 -p tcp -m multiport --dports 22,80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
     iptables -A OUTPUT -i enp0s3 -p tcp -m multiport --dports 22,80,443 -m state --state ESTABLISHED -j ACCEPT
+
+Una vez realizado se debe programar el script para que se ejecute cada vez que se arranca el sistema, para conseguirlo editamos el fichero de contrab y añadimos,
+
+    @reboot sudo sh /etc/iptables_conf.sh
+
+Ya tendriamos los puertos preparados de ambas máquinas una vez realizado.
+
+### Funcionamiento de la práctica
+
+Para probar el funcionamiento desde el cliente lanzaré curl -k https://balanceadorIP
+
+![https ok](img/ssl.PNG)
