@@ -11,10 +11,10 @@
 
 Primero ejecutamos mysql -u root, nos pedirá la contraseña, una vez puesta, ya estaremos en la terminal de mysql y debemos poner:
 
-    create database contactos;
-    use contactos;
-    create table datos(nombre varchar(100),tlf int);
-    insert into datos(nombre,tlf) values ("pepe",95834987);
+    mysql> create database contactos;
+    mysql> use contactos;
+    mysql> create table datos(nombre varchar(100),tlf int);
+    mysql> insert into datos(nombre,tlf) values ("pepe",95834987);
 
 Una vez realizado, ya tendremos una base de datos llamada contactos con una entrada.
 
@@ -75,24 +75,24 @@ Y ahora reiniciamos el servicio.
 #### Mysql en Maestro
 Ahora debemos ir a la máquina maestro y vamos a crear el esclavo,
 
-    CREATE USER esclavo IDENTIFIED BY 'esclavo';
-    GRANT REPLICATION SLAVE ON *.* TO 'esclavo'@'%' IDENTIFIED BY 'esclavo';
-    FLUSH PRIVILEGES;
-    FLUSH TABLES;
-    FLUSH TABLES WITH READ LOCK;
+    mysql> CREATE USER esclavo IDENTIFIED BY 'esclavo';
+    mysql> GRANT REPLICATION SLAVE ON *.* TO 'esclavo'@'%' IDENTIFIED BY 'esclavo';
+    mysql> FLUSH PRIVILEGES;
+    mysql> FLUSH TABLES;
+    mysql> FLUSH TABLES WITH READ LOCK;
 
 #### Mysql en esclavo
 Ahora debemos ir a la máquina esclavo y añadimos,
 
-    CHANGE MASTER TO MASTER_HOST='10.2.0.4',MASTER_USER='esclavo', MASTER_PASSWORD='esclavo',MASTER_LOG_FILE='bin.000002', MASTER_LOG_POS=442, MASTER_PORT=3306;
-    START SLAVE;
+    mysql> CHANGE MASTER TO MASTER_HOST='10.2.0.4',MASTER_USER='esclavo', MASTER_PASSWORD='esclavo',MASTER_LOG_FILE='bin.000002', MASTER_LOG_POS=442, MASTER_PORT=3306;
+    mysql> START SLAVE;
 
 Para que el esclavo pueda acceder hay que desbloquear las tablas en el maestro:
-    UNLOCK TABLES;
+    mysql> UNLOCK TABLES;
 
 Una vez realizado mostramos en el esclavo su status y si seconds_behind_master es distinto de null esta funcionando, en mi caso obtengo,
 
-    SHOW SLAVE STATUS\G
+    mysql> SHOW SLAVE STATUS\G
 
 ![esclavo](img/fin.PNG)
 
