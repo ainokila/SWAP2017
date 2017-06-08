@@ -75,7 +75,7 @@ Como se puede apreciar /dev/sdb ya no esta operativo,
 
 Como se puede apreciar, vuelve a estar 100% operativo.
 
-![fin](img/5.PNG)
+![img/5.PNG](img/5.PNG)
 
 
 
