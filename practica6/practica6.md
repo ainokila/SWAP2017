@@ -49,7 +49,7 @@ Primero debemos saber cual es el UUID del md127, para ello ejecutaremos,
 
 Después simplemente vamos editamos el fichero /etc/fstab y añadimos la linea 
 
-    UUID= nuesta UUID /dat ext2 defaults 0 0
+    UUID= nuestra UUID /dat ext2 defaults 0 0
 
 Guardamos y ya siempre que arranque estará montado en /dat.
 
@@ -59,15 +59,15 @@ Para simular un fallo ejecutaré,
 
     sudo mdadm --manage --set-faulty /dev/md0 /dev/sdb
 
-    ![fallo](img/2.PNG)
+![fallo](img/2.PNG)
 
 Después simplemente lo quitamos,
 
-    ![remove](img/3.PNG)
+![remove](img/3.PNG)
 
 Como se puede apreciar /dev/sdb ya no esta operativo,
 
-    ![detalles](img/4.PNG)
+![detalles](img/4.PNG)
 
 ### Añadimos de nuevo el disco
 
@@ -75,7 +75,7 @@ Como se puede apreciar /dev/sdb ya no esta operativo,
 
 Como se puede apreciar, vuelve a estar 100% operativo.
 
-    ![fin](img/5.PNG)
+![fin](img/5.PNG)
 
 
 
